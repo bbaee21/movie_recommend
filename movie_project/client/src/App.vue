@@ -1,0 +1,113 @@
+<template>
+  <div id="app">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">HOME</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">랭킹</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">상영/예정작</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">콘텐츠</a>
+            </li>
+            <span class="navbar-nav" v-if="isLogin">
+              <li class="nav-item">
+                <router-link class="nav-link"  :to="{ name: 'TodoList' }">찜한 컨텐츠</router-link>
+              </li>
+              <li class="nav-item">
+                <router-link class="nav-link"  :to="{ name: 'CreateTodo' }">Create Todo</router-link>
+              </li>
+              <li class="nav-item">
+                <router-link class="nav-link"  @click.native="logout" to="#">Logout</router-link>
+              </li>
+            </span>
+            <span class="navbar-nav" v-else>
+              <li class="nav-item">
+                <router-link class="nav-link" :to="{ name: 'Signup' }">회원가입</router-link> 
+              </li>
+              <li>
+                <router-link class="nav-link" :to="{ name: 'Login' }">로그인</router-link> 
+              </li>
+            </span>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div id="nav">
+
+    </div>
+
+    <div v-if="isLogin">
+    어서오세요 {{ username }} 님
+    </div>
+    <router-view @login="setLogin"/>
+  </div>
+</template>
+
+<script>
+import jwt_decode from "jwt-decode"
+
+export default {
+  name: 'App',
+  data: function () {
+    return {
+      isLogin: false,
+      username: '',
+    }
+  },
+  methods: {
+    logout: function () {
+      // console.log('logout')
+      this.isLogin = false
+      localStorage.removeItem('jwt')
+      this.$router.push({ name: 'Login' })
+    },
+    setLogin: function (username) {
+      this.isLogin = true
+      this.username = username
+    }
+  },
+  created: function () {
+    const token = localStorage.getItem('jwt')
+    if (token) {
+      this.isLogin = true
+      let decoded = jwt_decode(token)
+      this.username = decoded.username
+    } else {
+      this.isLogin = false
+      this.$router.push({ name: 'Login' })
+    }
+  }
+}
+</script>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
+/* 
+#nav {
+  padding: 30px;
+}
+
+#nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+#nav a.router-link-exact-active {
+  color: #42b983;
+} */
+</style>
