@@ -2,7 +2,7 @@
   <div id="app">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">HOME</a>
+        <router-link class="nav-link"  :to="{ name: 'Home', params: { movies }}">HOME</router-link>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -53,7 +53,8 @@
 </template>
 
 <script>
-import jwt_decode from "jwt-decode"
+// import jwt_decode from "jwt-decode"
+import axios from 'axios'
 
 export default {
   name: 'App',
@@ -61,6 +62,7 @@ export default {
     return {
       isLogin: false,
       username: '',
+      movies: [],
     }
   },
   methods: {
@@ -68,7 +70,8 @@ export default {
       // console.log('logout')
       this.isLogin = false
       localStorage.removeItem('jwt')
-      this.$router.push({ name: 'Login' })
+      // 다시 홈으로
+      // this.$router.push({ name: 'Login' })
     },
     setLogin: function (username) {
       this.isLogin = true
@@ -76,15 +79,25 @@ export default {
     }
   },
   created: function () {
-    const token = localStorage.getItem('jwt')
-    if (token) {
-      this.isLogin = true
-      let decoded = jwt_decode(token)
-      this.username = decoded.username
-    } else {
-      this.isLogin = false
-      this.$router.push({ name: 'Login' })
-    }
+    axios.get('https://gist.githubusercontent.com/eduChange-hphk/d9acb9fcfaa6ece53c9e8bcddd64131b/raw/9c8bc58a99e2ea77d42abd41376e5e1becabea69/movies.json')
+      .then((res) => {
+        this.movies = res.data
+      })
+      .catch((error) => {
+        console.error(error)
+      })
+  
+    // const token = localStorage.getItem('jwt')
+    // if (token) {
+    //   this.isLogin = true
+    //   let decoded = jwt_decode(token)
+    //   this.username = decoded.username
+    // } else {
+    //   this.isLogin = false
+
+
+      // this.$router.push({ name: 'Login' })
+    // }
   }
 }
 </script>
