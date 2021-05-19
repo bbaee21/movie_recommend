@@ -1,7 +1,8 @@
 <template>
   <div class="detail">
     <h1>Movie Detail</h1>
-    <div>{{ movie }}</div>
+    <!-- <div>{{this.$store.state.catList }}</div> -->
+    {{ movie }}
   </div>
 </template>
 
@@ -14,9 +15,6 @@ export default {
     movie: {
       type: Array,
     }
-  },
-  components: {
-    MovieCard,
   },
 
 }

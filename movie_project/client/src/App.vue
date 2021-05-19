@@ -79,6 +79,9 @@ export default {
     }
   },
   created: function () {
+    // vuex로 data 저장
+    this.$store.dispatch('addCatImg')
+    // router data 저장
     axios.get('https://gist.githubusercontent.com/eduChange-hphk/d9acb9fcfaa6ece53c9e8bcddd64131b/raw/9c8bc58a99e2ea77d42abd41376e5e1becabea69/movies.json')
       .then((res) => {
         this.movies = res.data

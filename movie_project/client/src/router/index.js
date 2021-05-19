@@ -5,6 +5,7 @@ import CreateTodo from '@/views/todos/CreateTodo'
 import Signup from '@/views/accounts/Signup'
 import Login from '@/views/accounts/Login'
 import Home from '@/views/movies/Home'
+import Detail from '@/views/movies/Detail'
 
 Vue.use(VueRouter)
 
@@ -34,7 +35,12 @@ const routes = [
     name: 'Home',
     component: Home,
     props: true,
-
+  },
+  {
+    path: '/movies/detail',
+    name: 'Detail',
+    component: Detail,
+    props: true,
   },
 ]
 

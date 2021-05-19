@@ -7,6 +7,7 @@
         :movie="movie"
       />
     </div>
+    
   </div>
 </template>
 
