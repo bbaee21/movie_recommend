@@ -34,7 +34,7 @@
       <ul>
         <li>주요정보</li>
         <li>출연/제작</li>
-        <li @click="video">영상/포토</li>
+        <li>영상/포토</li>
         <li>평점</li>
       </ul>
     </div>
