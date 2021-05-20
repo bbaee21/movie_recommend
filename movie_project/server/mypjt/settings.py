@@ -32,7 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'moviedata',
+    'movies',
     'todos',
     'accounts',
     'rest_framework',
