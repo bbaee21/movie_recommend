@@ -62,6 +62,8 @@
 // import jwt_decode from "jwt-decode"
 import axios from 'axios'
 
+const SERVER_URL = process.env.VUE_APP_SERVER_URL
+
 export default {
   name: 'App',
   data: function () {
@@ -88,8 +90,9 @@ export default {
     // vuex로 data 저장`
     this.$store.dispatch('addCatImg')
     // router data 저장
-    axios.get('https://gist.githubusercontent.com/eduChange-hphk/d9acb9fcfaa6ece53c9e8bcddd64131b/raw/9c8bc58a99e2ea77d42abd41376e5e1becabea69/movies.json')
+    axios.get(`${SERVER_URL}/movies/?format=json`)
       .then((res) => {
+        // console.log(res)
         this.movies = res.data
       })
       .catch((error) => {
