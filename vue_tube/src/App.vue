@@ -37,6 +37,7 @@ export default {
   methods: {
     requestSearch: function (search) {
       console.log(API_KEY)
+      console.log(search)
 
       axios.get(API_URL, {
         params: {
