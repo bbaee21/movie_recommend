@@ -29,6 +29,7 @@ const routes = [
     path: '/accounts/login',
     name: 'Login',
     component: Login,
+    props: true,
   },
   {
     path: '/movies/home',

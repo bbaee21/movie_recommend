@@ -19,6 +19,9 @@
             <li class="nav-item">
               <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">콘텐츠</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">커뮤니티</a>
+            </li>
           </ul>
 
           <span class="navbar-nav" v-if="isLogin">
@@ -40,7 +43,7 @@
               <router-link class="nav-link" :to="{ name: 'Signup' }">회원가입</router-link> 
             </li>
             <li>
-              <router-link class="nav-link" :to="{ name: 'Login' }">로그인</router-link> 
+              <router-link class="nav-link" :to="{ name: 'Login', params: {movies} }">로그인</router-link> 
             </li>
           </ul>
           </span>

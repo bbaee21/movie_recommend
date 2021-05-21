@@ -32,29 +32,38 @@
     <hr>
     <div class="tabmenu" role="tablist">
       <ul>
-        <li>주요정보</li>
-        <li>출연/제작</li>
-        <li>영상/포토</li>
-        <li>평점</li>
+        <dl>주요정보</dl>
+        <dl>출연/제작</dl>
+        <dl>영상/포토</dl>
+        <dl>평점</dl>
       </ul>
+      <hr>
     </div>
+    <MovieReview :movie="movie"/>
   </div>
 </template>
 
 <script>
+// import axios from 'axios';
+
+// const SERVER_URL = process.env.VUE_APP_SERVER_URL
+import MovieReview from '@/components/MovieReview'
 
 export default {
   name: 'Detail',
-  // data() {
-  //   return {
-  //     movie: '',
-  //   }
-  // },
   props: {
     movie: {
       type: Object,
     },
   },
+  data() {
+    return {
+      reviews: [],
+    }
+  },
+  components: {
+    MovieReview,
+  }
 }
 </script>
 
