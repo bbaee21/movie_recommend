@@ -1,7 +1,7 @@
 <template>
-  <div class="detail">
+  <div class="detail container">
     <h1>Movie Detail</h1>
-    <!-- <div>{{this.$store.state.catList }}</div> -->
+
     <hr>
     <div class="card mb-3" style="max-width: 540px;">
       <div class="row g-0">
@@ -14,6 +14,7 @@
               <h3 class="card-title">{{ movie.title }}</h3>
             </div>
             <div class="detail_content">
+              <h5>주요정보</h5>
               <dl>
                 <dt>개봉일</dt>
                 <dd>{{ movie.release_date }}</dd>
@@ -22,40 +23,82 @@
                 <dt>장르</dt>
                 <dd>{{ movie.genre_ids }}</dd>
               </dl>
-              <p>평점 : {{ movie.vote_average }}</p>
+              <dl>
+                <dt>평점</dt>
+                <dd>{{ movie.vote_average }}</dd>
+              </dl>
+
             </div>
           </div>
         </div>
       </div>
     </div>
-
     <hr>
-    <div class="tabmenu" role="tablist">
-      <ul>
-        <li>주요정보</li>
-        <li>출연/제작</li>
-        <li>영상/포토</li>
-        <li>평점</li>
-      </ul>
-    </div>
+    <h5 class="text-start">줄거리</h5>
+    <p class="text-start">{{ movie.overview }}</p>
+    <hr>
+
+
+    <h5 class="text-start">영화 예고편</h5>
+      <iframe :src="videoUrl" width="1280" height="640" frameborder="0"></iframe>
+
+
+
   </div>
 </template>
 
 <script>
+  import axios from 'axios'
 
-export default {
-  name: 'Detail',
-  // data() {
-  //   return {
-  //     movie: '',
-  //   }
-  // },
-  props: {
-    movie: {
-      type: Object,
+  export default {
+    name: 'Detail',
+    data() {
+      return {
+        video: '',
+        searchData: this.movie.title + ' 예고편',
+      }
     },
-  },
-}
+    props: {
+      movie: {
+        type: Object,
+      },
+    },
+    computed: {
+      videoUrl: function () {
+        const videoId = this.video
+        return `http://www.youtube.com/embed/${videoId}`
+      }
+    },
+    methods: {
+      requestSearch: function () {
+        const API_URL = 'https://www.googleapis.com/youtube/v3/search'
+        const API_KEY = 'AIzaSyDvCFlKmg55T9mUBdcmekPltuI4UZelI_c'
+        const search = this.searchData
+
+        axios.get(API_URL, {
+          params: {
+            key: API_KEY,
+            part: 'snippet',
+            q: search,
+            type: 'video',
+          }
+        })
+
+        .then(response => {
+          this.video = response.data.items[0].id.videoId
+        })
+
+        .catch(error => {
+          console.log(error);
+        })
+      },  
+    },
+    created: function() {
+      this.requestSearch()
+    }
+
+    
+  }
 </script>
 
 <style>

@@ -52,7 +52,8 @@
     </div>
 
     <div v-if="isLogin">
-    어서오세요 {{ username }} 님
+      어서오세요 {{ username }} 님
+
     </div>
     <router-view @login="setLogin"/>
   </div>
