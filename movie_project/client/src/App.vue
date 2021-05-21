@@ -50,9 +50,7 @@
         </div>
       </div>
     </nav>
-    <div id="nav">
 
-    </div>
 
     <div v-if="isLogin">
       어서오세요 {{ username }} 님
