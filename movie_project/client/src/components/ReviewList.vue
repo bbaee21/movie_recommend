@@ -11,7 +11,7 @@ import MovieReviewItem from '@/components/MovieReviewItem'
 export default {
   name: 'ReviewList',
   props: {
-    reviews: Array,
+    reviews: [Array, Object],
     movie: Object
   },
   components: {

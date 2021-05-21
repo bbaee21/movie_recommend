@@ -34,7 +34,7 @@ export default {
   },
   methods: {
     getComments() {
-      axios.get(`${SERVER_URL}/${this.review.id}/comment/`)
+      axios.get(`${SERVER_URL}/movies/${this.review.id}/comment/`)
       .then(res => {
         this.comments = res.data
         // console.log(res);
@@ -48,7 +48,7 @@ export default {
         content: this.comment_content
       }
       if (CommentItem.content) {
-        axios.post(`${SERVER_URL}/${this.review.id}/comment/`, CommentItem)
+        axios.post(`${SERVER_URL}/movies/${this.review.id}/comment/`, CommentItem)
           .then(() => {
             this.getComments()
             this.comment_content = ''
@@ -56,9 +56,9 @@ export default {
       }
     },
   },
-  created() {
-    this.getComments()
-  }
+  // created() {
+  //   this.getComments()
+  // }
 }
 </script>
 

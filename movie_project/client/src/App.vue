@@ -88,7 +88,8 @@ export default {
     setLogin: function (username) {
       this.isLogin = true
       this.username = username
-    }
+    },
+    // this.$router.push({ name: 'Home'})
   },
   created: function () {
     
@@ -99,7 +100,6 @@ export default {
       .then((res) => {
         // console.log(res)
         this.movies = res.data
-        // this.$router.push({ name: 'Home'})
       })
       .catch((error) => {
         console.error(error)

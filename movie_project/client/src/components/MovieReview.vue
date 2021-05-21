@@ -28,7 +28,7 @@ export default {
   },
   methods: {
     getReviews() {
-      axios.get(`${SERVER_URL}/${this.movie.id}/review/`)
+      axios.get(`${SERVER_URL}/movies/${this.movie.id}/review/`)
         .then(res => {
           this.reviews = res.data
         })
@@ -37,9 +37,9 @@ export default {
         })
     }
   },
-  // created() {
-  //   this.getReviews()
-  // }
+  created() {
+    this.getReviews()
+  }
 }
 </script>
 

@@ -41,7 +41,6 @@ export default {
     return {
       title: '',
       content: '',
-      movierate: '',
       myrate: 0,
     }
   },
@@ -50,7 +49,7 @@ export default {
       const reviewItem = {
         title: this.title,
         content: this.content,
-        myrate: this.myrate,
+        rank: this.myrate,
         movie: this.movie.id,
       }
       console.log(reviewItem);
@@ -59,9 +58,8 @@ export default {
           .then(() => {
             this.$emit('createReview')
             this.title = ''
-            this.myrate = 0
-            this.content = ''
             this.rank = 0
+            this.content = ''
           })
           .catch(err => {
             console.log(err)
@@ -69,6 +67,9 @@ export default {
       }
     }
   },
+  // created(){
+
+  // }
 }
 </script>
 
