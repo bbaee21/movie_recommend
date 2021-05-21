@@ -91,6 +91,7 @@ export default {
     }
   },
   created: function () {
+    
     // vuex로 data 저장`
     this.$store.dispatch('addCatImg')
     // router data 저장
@@ -98,6 +99,7 @@ export default {
       .then((res) => {
         // console.log(res)
         this.movies = res.data
+        // this.$router.push({ name: 'Home'})
       })
       .catch((error) => {
         console.error(error)
@@ -111,8 +113,8 @@ export default {
     // } else {
     //   this.isLogin = false
 
-
-      // this.$router.push({ name: 'Login' })
+    
+    
     // }
   }
 }

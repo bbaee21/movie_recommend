@@ -41,6 +41,7 @@
 
     <h5 class="text-start">영화 예고편</h5>
       <iframe :src="videoUrl" width="1280" height="640" frameborder="0"></iframe>
+    <MovieReview :movie="movie" />
   </div>
 </template>
 

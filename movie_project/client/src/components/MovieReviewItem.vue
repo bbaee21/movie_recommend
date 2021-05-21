@@ -1,11 +1,11 @@
 <template>
   <div>
     <div>
-      <h3>제목 {{ review.title }}</h3>
-      <h4>내용 {{ review.content }}</h4>
+      <h3 class="text-start">제목 {{ review.title }}</h3>
+      <h4 class="text-start">내용 {{ review.content }}</h4>
     </div>
     <hr>
-    <div>
+    <div class="text-start">
       <label class="form-label">댓글</label>
       <input type="text" class="form-control" v-model="comment_content">
     </div>
