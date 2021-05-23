@@ -2,7 +2,7 @@
   <div class="movie_review">
     <dt>
       <div class="mb-3">
-        <label>영화 제목 : {{ movie.title }}</label>
+        <label>리뷰 남기기</label>
         <!-- <input placeholder={{ movie.title }}> -->
       </div>
       <div class="mb-3">
@@ -58,8 +58,10 @@ export default {
           .then(() => {
             this.$emit('createReview')
             this.title = ''
-            this.rank = 0
+            this.rank = ''
             this.content = ''
+            // const movie = this.movie
+            this.$router.push({ name: 'Detail', params: {reviewItem} })
           })
           .catch(err => {
             console.log(err)
