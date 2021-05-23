@@ -30,14 +30,8 @@ export default {
       password: '',
     }
   },
-  props: {
-    movies: {
-      type: Array,
-    }
-  },
   methods: {
     login: function () {
-      const movies = this.movies
       const data = {
         username: this.username,
         password: this.password
@@ -51,12 +45,13 @@ export default {
         this.$emit('login', username)
 
         localStorage.setItem('jwt', res.data.token)
-        this.$router.push({ name: 'Home', params: {movies} })
+        this.$router.push({ name: 'Home'})
         })
         .catch(err => {
           console.log(err.response)
         })
     }
-  }
+  },
+
 }
 </script>

@@ -21,7 +21,7 @@ export default {
   methods: {
     detail() {
       const movie = this.movie
-      this.$emit('detail', movie)
+      // this.$emit('detail', movie)
       this.$router.push({ name: 'Detail', params: {movie} })
     }
   }

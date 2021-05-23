@@ -43,7 +43,7 @@
               <router-link class="nav-link" :to="{ name: 'Signup' }">회원가입</router-link> 
             </li>
             <li>
-              <router-link class="nav-link" :to="{ name: 'Login', params: {movies} }">로그인</router-link> 
+              <router-link class="nav-link" :to="{ name: 'Login' }">로그인</router-link> 
             </li>
           </ul>
           </span>
@@ -63,6 +63,7 @@
 <script>
 // import jwt_decode from "jwt-decode"
 import axios from 'axios'
+
 
 const SERVER_URL = process.env.VUE_APP_SERVER_URL
 
@@ -87,7 +88,6 @@ export default {
       this.isLogin = true
       this.username = username
     },
-    // this.$router.push({ name: 'Home'})
   },
   created: function () {
     
@@ -98,6 +98,7 @@ export default {
       .then((res) => {
         // console.log(res)
         this.movies = res.data
+        this.$router.push({name: 'Home'})
       })
       .catch((error) => {
         console.error(error)

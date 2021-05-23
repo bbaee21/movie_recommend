@@ -28,7 +28,7 @@
           </form>
       </div>
 
-      </div>
+    </div>
       
       <div class="row row-cols-1 row-cols-md-3">
         <MovieCard v-for="(movie, idx) in movies" 
@@ -42,7 +42,9 @@
 
 <script>
 import MovieCard from '@/components/MovieCard'
+import axios from 'axios'
 
+const SERVER_URL = process.env.VUE_APP_SERVER_URL
 
 export default {
   name: 'Home',
@@ -54,6 +56,20 @@ export default {
   components: {
     MovieCard,
   },
+  created: function () {
+    
+    // vuex로 data 저장`
+    this.$store.dispatch('addCatImg')
+    // router data 저장
+    axios.get(`${SERVER_URL}/movies/?format=json`)
+      .then((res) => {
+        // console.log(res)
+        this.movies = res.data
+      })
+      .catch((error) => {
+        console.error(error)
+      })
+  }
 }
 </script>
 

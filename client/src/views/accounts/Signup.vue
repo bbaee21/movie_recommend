@@ -45,7 +45,7 @@ export default {
       axios.post(`${SERVER_URL}/accounts/signup/`, data)
         .then(res => {
           console.log(res)
-          this.$router.push({ name: 'Login' })
+          this.$router.push({ name: 'Login'})
         })
         .catch(err => {
           console.log(err.response)
