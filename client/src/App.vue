@@ -2,7 +2,7 @@
   <div id="app">
     <nav class="navbar navbar-expand-lg navbar-light">
       <div class="container-fluid">
-        <router-link class="nav-link"  :to="{ name: 'Home', params: { movies }}">홈</router-link>
+        <router-link class="nav-link"  :to="{ name: 'Home'}">홈</router-link>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -62,10 +62,10 @@
 
 <script>
 // import jwt_decode from "jwt-decode"
-import axios from 'axios'
+// import axios from 'axios'
 
 
-const SERVER_URL = process.env.VUE_APP_SERVER_URL
+// const SERVER_URL = process.env.VUE_APP_SERVER_URL
 
 export default {
   name: 'App',
@@ -90,19 +90,7 @@ export default {
     },
   },
   created: function () {
-    
-    // vuex로 data 저장`
-    this.$store.dispatch('addCatImg')
-    // router data 저장
-    axios.get(`${SERVER_URL}/movies/?format=json`)
-      .then((res) => {
-        // console.log(res)
-        this.movies = res.data
-        this.$router.push({name: 'Home'})
-      })
-      .catch((error) => {
-        console.error(error)
-      })
+    this.$router.push({name: 'Home'})
   
     // const token = localStorage.getItem('jwt')
     // if (token) {
