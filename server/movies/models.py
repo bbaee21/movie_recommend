@@ -16,7 +16,6 @@ class Movie(models.Model):
 
 class Review(models.Model):
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
-    title = models.CharField(max_length=100)
     content = models.TextField()
     rank = models.PositiveIntegerField(
         validators=[

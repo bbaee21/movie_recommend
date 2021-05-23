@@ -1,7 +1,6 @@
 <template>
   <div>
     <div>
-      <h3 class="text-start">제목 | {{ review.title }}</h3>
       <h4 class="text-start">내용 | {{ review.content }}</h4>
       <h5 class="text-start">평점 | {{ review.rank }}</h5>
     </div>
@@ -26,7 +25,6 @@ export default {
   },
   data() {
     return {
-      // reviewtitle: '',
       content: '',
       movierate: '',
       myrate: 0,
@@ -39,7 +37,6 @@ export default {
       axios.get(`${SERVER_URL}/movies/${this.review.id}/comment/`)
       .then(res => {
         this.comments = res.data
-        // console.log(res);
       })
       .catch(err => {
         console.log(err);
