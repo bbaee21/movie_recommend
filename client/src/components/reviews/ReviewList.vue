@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import MovieReviewItem from '@/components/MovieReviewItem'
+import MovieReviewItem from '@/components/reviews/MovieReviewItem'
 export default {
   name: 'ReviewList',
   props: {

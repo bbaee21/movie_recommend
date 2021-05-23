@@ -48,7 +48,7 @@
 <script>
 
   import axios from 'axios'
-  import MovieReview from '@/components/MovieReview'
+  import MovieReview from '@/components/reviews/MovieReview'
 
   export default {
     name: 'Detail',

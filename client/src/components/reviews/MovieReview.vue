@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import CreateReview from '@/components/CreateReview'
-import ReviewList from '@/components/ReviewList'
+import CreateReview from '@/components/reviews/CreateReview'
+import ReviewList from '@/components/reviews/ReviewList'
 
 import axios from 'axios'
 const SERVER_URL = process.env.VUE_APP_SERVER_URL

@@ -190,7 +190,7 @@
 </template>
 
 <script>
-import MovieCard from '@/components/MovieCard'
+import MovieCard from '@/components/movies/MovieCard'
 import axios from 'axios'
 
 const SERVER_URL = process.env.VUE_APP_SERVER_URL
