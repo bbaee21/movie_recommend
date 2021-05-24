@@ -20,18 +20,12 @@
               <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">콘텐츠</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">커뮤니티</a>
+              <router-link class="nav-link"  :to="{ name: 'Community' }">커뮤니티</router-link>
             </li>
           </ul>
 
           <span class="navbar-nav" v-if="isLogin">
             <ul class="navbar-nav mx-5">
-              <li class="nav-item">
-                <router-link class="nav-link"  :to="{ name: 'TodoList' }">찜한 컨텐츠</router-link>
-              </li>
-              <li class="nav-item">
-                <router-link class="nav-link"  :to="{ name: 'CreateTodo' }">리뷰 작성하기</router-link>
-              </li>
               <li class="nav-item">
                 <router-link class="nav-link"  @click.native="logout" to="#">Logout</router-link>
               </li>

@@ -1,25 +1,16 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import TodoList from '@/views/todos/TodoList'
-import CreateTodo from '@/views/todos/CreateTodo'
 import Signup from '@/views/accounts/Signup'
 import Login from '@/views/accounts/Login'
 import Home from '@/views/movies/Home'
 import Detail from '@/views/movies/Detail'
+import Community from '@/views/community/Community'
+import CommunityDetail from '@/views/community/CommunityDetail'
+import DetailUpdate from '@/views/community/DetailUpdate'
 
 Vue.use(VueRouter)
 
 const routes = [
-  {
-    path: '/todos',
-    name: 'TodoList',
-    component: TodoList,
-  },
-  {
-    path: '/todos/create',
-    name: 'CreateTodo',
-    component: CreateTodo,
-  },
   {
     path: '/accounts/signup',
     name: 'Signup',
@@ -34,13 +25,27 @@ const routes = [
     path: '/movies/home',
     name: 'Home',
     component: Home,
-
   },
   {
     path: '/movies/detail',
     name: 'Detail',
     component: Detail,
     props: true,
+  },
+  {
+    path: '/community',
+    name: 'Community',
+    component: Community,
+  },
+  {
+    path: '/community/',
+    name: 'CommunityDetail',
+    component: CommunityDetail,
+  },
+  {
+    path: '/community/community_d_u/',
+    name: 'DetailUpdate',
+    component: DetailUpdate,
   },
 ]
 

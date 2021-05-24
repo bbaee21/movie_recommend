@@ -33,7 +33,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'movies',
-    'todos',
+    'community',
     'accounts',
     'rest_framework',
     # django cors

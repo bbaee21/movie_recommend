@@ -1,7 +1,6 @@
 from rest_framework import serializers
 from .models import Movie, Review, Comment
 
-
 class MovieListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Movie

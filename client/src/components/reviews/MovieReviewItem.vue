@@ -8,6 +8,12 @@
     <div class="text-start">
       <label class="form-label">댓글</label>
       <input type="text" class="form-control" v-model="comment_content">
+      <hr>
+    <div v-for="(comment, idx) in comments" :key="idx">
+      {{ comment.content }}
+    </div>
+
+      <button @click="createComments">댓글 작성</button>
     </div>
     <hr>
   </div>
