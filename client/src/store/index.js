@@ -7,17 +7,17 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     movies: [],
-    catList: [],
+    movieList: [],
     reviews: [],
   },
   getters: {
     getCard(state) {
-      return state.catList
+      return state.movieList
     },
   },
   mutations: {
-    ADD_CAT_IMG: function (state, cat) {
-      state.catList.push(cat)
+    ADD_MOVIE: function (state, movie) {
+      state.movieList.push(movie)
     },
     CREATE_REVIEW: function (state, review) {
       state.reviews.push(review)
@@ -26,10 +26,10 @@ export default new Vuex.Store({
   actions: {
     addCatImg: function (context) {
       const SERVER_URL = process.env.VUE_APP_SERVER_URL
-      const CAT_API = `${SERVER_URL}/movies/?format=json`
-      axios.get(CAT_API)
+      const MOVIE_API = `${SERVER_URL}/movies/?format=json`
+      axios.get(MOVIE_API)
         .then(res => {
-          context.commit('ADD_CAT_IMG', res.data)
+          context.commit('ADD_MOVIE', res.data)
         })
       },
     createReview: function (context, review) {
