@@ -27,7 +27,7 @@ const routes = [
     component: Home,
   },
   {
-    path: '/movies/detail',
+    path: '/movies/',
     name: 'Detail',
     component: Detail,
     props: true,
