@@ -23,7 +23,6 @@ class Review(models.Model):
         ]
     )
 
-
 class Comment(models.Model):
     review = models.ForeignKey(Review, on_delete=models.CASCADE)
     content = models.CharField(max_length=100)
