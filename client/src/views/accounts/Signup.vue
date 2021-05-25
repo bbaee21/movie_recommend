@@ -16,18 +16,20 @@
         @keypress.enter="signup"
       >
     </div>
+
     <div class="my-5">
       <h2>Face ID 사진을 넣어주세요</h2>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a0/%D7%94%D7%9C%D7%95%D7%92%D7%95_%D7%A9%D7%9C_%D7%9E%D7%A2%D7%A8%D7%9B%D7%AA_%D7%94%D6%BEFace_ID.jpg" alt="">
+      <PhotoCapture v-model="imageBase64" />
     </div>
-    <ImageUpload/>
+
     <button @click="signup">회원가입</button>
   </div>
 </template>
 
 <script>
+
 import axios from 'axios'
-import ImageUpload from '@/components/accounts/ImageUpload'
+import {PhotoCapture} from 'vue-media-recorder'
 const SERVER_URL = process.env.VUE_APP_SERVER_URL
 
 export default {
@@ -37,6 +39,7 @@ export default {
       username: '',
       password: '',
       passwordConfirmation: '',
+      imageBase64: '',
     }
   },
   methods: {
@@ -46,6 +49,7 @@ export default {
         username: this.username,
         password: this.password,
         passwordConfirmation: this.passwordConfirmation,
+        imageBase64: this.imageBase64,
       }
       axios.post(`${SERVER_URL}/accounts/signup/`, data)
         .then(res => {
@@ -58,7 +62,8 @@ export default {
       }
     },
     components: {
-      ImageUpload,
+      PhotoCapture,
     },
 }
 </script>
+

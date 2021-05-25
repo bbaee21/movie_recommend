@@ -33,7 +33,7 @@ export default {
   border: 0px; /* Gray border */
   border-radius: 4px;  /* Rounded border */
   padding: 5px; /* Some padding */
-  width: 150px; /* Set a small width */
+  width: 250px; /* Set a small width */
 }
 
 /* Add a hover effect (blue shadow) */

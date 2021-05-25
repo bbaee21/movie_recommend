@@ -48,7 +48,7 @@
       <div class="my-5">
         <h3 class="d-flex my-3">
           <div class="text-start">
-          <span>{{ gender }} 인기순</span>
+          <span>{{ gender }} 추천 영화</span>
           </div>
           <button @click="changeGender">></button>
 
@@ -63,14 +63,23 @@
 
 
       <!-- 전체 카드 -->
+      <h3> 전체 영화</h3>
+      <hr>
+
       <div class="row row-cols-1 row-cols-md-3">
         <MovieCard v-for="(movie, idx) in movies" 
           :key="idx"
           :movie="movie"
         />
       </div>
-
     </div>
+    <footer class="bg-light text-center text-lg-start">
+      <!-- Copyright -->
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2021 SSAFY 박상락 - 황배근
+      </div>
+      <!-- Copyright -->
+    </footer>
   </div>
 </template>
 
