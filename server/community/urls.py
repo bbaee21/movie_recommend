@@ -8,6 +8,6 @@ urlpatterns = [
     path("<int:community_pk>/", views.community_detail),
     path("community_d_u/<int:community_pk>/", views.community_update_delete),
 
-    path("int:community_pk>/comment/", views.comment_create_list),
+    path("int:community_pk>/comments/", views.comment_create_list),
     path("comment/<int:comment_pk>/", views.comment_detail_update_delete),
 ]

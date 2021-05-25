@@ -11,7 +11,7 @@ urlpatterns = [
     # 리뷰 단일, 수정, 삭제
     path("review/<int:review_pk>/", views.review_detail_update_delete),
     # 댓글 리스트, 생성
-    path("<int:review_pk>/comment/", views.comment_create_list),
+    path("<int:review_pk>/review_comments/", views.comment_create_list),
     # 댓글 단일, 수정, 삭제
-    path("comment/<int:comment_pk>/", views.comment_detail_update_delete),
+    path("review_comment/<int:comment_pk>/", views.comment_detail_update_delete),
 ]

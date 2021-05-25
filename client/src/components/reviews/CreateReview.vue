@@ -55,9 +55,9 @@ export default {
         axios.post(`${SERVER_URL}/movies/${this.movie.id}/review/`, reviewItem)
           .then(() => {
             this.$emit('createReview')
-            this.rank = ''
             this.content = ''
-            this.$router.push({ name: 'Detail', params: {reviewItem} })
+            this.myrate = ''
+            // this.$router.push({ name: 'Detail', params: {reviewItem} })
           })
           .catch(err => {
             console.log(err)

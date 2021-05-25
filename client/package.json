@@ -13,7 +13,7 @@
     "core-js": "^3.6.5",
     "jwt-decode": "^3.1.2",
     "vue": "^2.6.11",
-    "vue-media-recorder": "0.1.25",
+    "vue-media-recorder": "^0.1.25",
     "vue-router": "^3.2.0",
     "vuex": "3.6.2"
   },
