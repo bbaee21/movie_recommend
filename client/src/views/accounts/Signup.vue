@@ -46,11 +46,14 @@ export default {
     }
   },
   methods: {
+    // base64 를 blob형식으로 변환
     b64toblock: function() {
       // function b64toBlob(b64Data, contentType, sliceSize) {
-        this.imageBase64 = this.imageBase64.split(',')[1];
-        const b64Data = this.imageBase64
+        // , 뒷부분 imageBase64 받기
+        const b64Data = this.imageBase64.split(',')[1];
+        // 형식 지정
         const contentType = 'image/png'
+        // 사이즈 지정
         const sliceSize = 512;
 
         var byteCharacters = atob(b64Data);
@@ -71,9 +74,9 @@ export default {
 
       var blob = new Blob(byteArrays, {type: contentType});
       blob.lastModifiedDate  = new Date()
-      // blob.name = 'abc.png'
+      // blob 파일에 이름 넣기
       const file = new File([blob],'abc.png', {type: "image/png"})
-      console.log(file)
+      // console.log(file)
       return file
       // return blob;
       // }
