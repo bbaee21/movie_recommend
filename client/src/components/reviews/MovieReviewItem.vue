@@ -53,7 +53,7 @@ export default {
         })
     },
     getComments() {
-      axios.get(`${SERVER_URL}/movies/${this.review.id}/review_comments/`)
+      axios.get(`${SERVER_URL}/movies/${this.review.id}/comment/`)
       .then(res => {
         this.comments = res.data
       })
@@ -66,7 +66,7 @@ export default {
         content: this.comment_content
       }
       if (CommentItem.content) {
-        axios.post(`${SERVER_URL}/movies/${this.review.id}/review_comments/`, CommentItem)
+        axios.post(`${SERVER_URL}/movies/${this.review.id}/comment/`, CommentItem)
           .then(() => {
             this.getComments()
             this.comment_content = ''
@@ -74,7 +74,7 @@ export default {
       }
     },
     deleteComments() {
-      axios.delete(`${SERVER_URL}/movies/review_comment/${this.review.id}/`)
+      axios.delete(`${SERVER_URL}/movies/comment/${this.review.id}/`)
         .then(res => {
           if (res.data.message) {
             alert("본인만 삭제 가능")
