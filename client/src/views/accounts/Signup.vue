@@ -74,8 +74,10 @@ export default {
 
       var blob = new Blob(byteArrays, {type: contentType});
       blob.lastModifiedDate  = new Date()
+      const imagename = this.username + '.png'
+      console.log(imagename)
       // blob 파일에 이름 넣기
-      const file = new File([blob],'abc.png', {type: "image/png"})
+      const file = new File([blob], imagename, {type: "image/png"})
       // console.log(file)
       return file
       // return blob;
