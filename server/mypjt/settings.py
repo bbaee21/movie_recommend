@@ -149,11 +149,8 @@ JWT_AUTH ={
 }
 
 # 각 media 파일에 대한 URL Prefix
-MEDIA_URL = '/media/' # 항상 / 로 끝나도록 설정
-# MEDIA_URL = 'http://static.myservice.com/media/' 다른 서버로 media 파일 복사시
-
-# 업로드된 파일을 저장할 디렉토리 경로
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/api/' # 기본 api url을 통일 시켜 번거로움을 줄이기 위해 /api/로 설정했음
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # 이미지 파일이 저장되는 기본 위치를 media폴더로 설정
 
 # REST_FRAMEWORK = {
 #     'DEFAULT_PERMISSION_CLASSES': (
