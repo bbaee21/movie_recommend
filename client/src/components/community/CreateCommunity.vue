@@ -58,7 +58,7 @@ export default {
         })
         // axios.post(`${SERVER_URL}/community/community_c/`, CommunityItem, config) //, config
           .then(() => {
-            this.$emit('createCommunity')
+            this.$emit('community-update')
             this.title = ''
             this.content = ''
           })

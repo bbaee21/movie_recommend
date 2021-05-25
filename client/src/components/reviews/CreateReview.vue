@@ -7,7 +7,7 @@
 
       <div>
         <label>리뷰 내용</label><br>
-        <textarea class="form-control" v-model="content"></textarea>
+        <textarea class="form-control" v-model="content" @keypress.enter="createReview"></textarea>
       </div>
 
       <div>
@@ -44,6 +44,15 @@ export default {
     }
   },
   methods: {
+    getReviews() {
+      axios.get(`${SERVER_URL}/movies/${this.movie.id}/review/`)
+        .then(res => {
+          this.reviews = res.data
+        })
+        .catch(err => {
+          console.log(err);
+        })
+    },
     createReview: function () {
       const reviewItem = {
         content: this.content,
@@ -54,10 +63,9 @@ export default {
       if (reviewItem.content) {
         axios.post(`${SERVER_URL}/movies/${this.movie.id}/review/`, reviewItem)
           .then(() => {
-            this.$emit('createReview')
+            this.$emit('review-update')
             this.content = ''
             this.myrate = ''
-            // this.$router.push({ name: 'Detail', params: {reviewItem} })
           })
           .catch(err => {
             console.log(err)
@@ -66,7 +74,7 @@ export default {
     }
   },
   // created(){
-
+  //   this.getReviews()
   // }
 }
 </script>

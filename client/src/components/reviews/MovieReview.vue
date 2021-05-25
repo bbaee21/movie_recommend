@@ -1,7 +1,12 @@
 <template>
   <div>
-    <CreateReview :movie="movie"/>
-    <ReviewList :reviews="reviews"/>
+    <CreateReview @review-update="reviewUpdate" :movie="movie"/>
+    <ReviewList 
+      :reviews="reviews"
+      :movie="movie"
+      @review-update="reviewUpdate" 
+      @deleteReview="getReviews"
+    />
   </div>
 </template>
 
@@ -27,14 +32,27 @@ export default {
     ReviewList,
   },
   methods: {
+    setToken: function () {
+      const token = localStorage.getItem('jwt')
+      const config = {
+        headers: {
+          Authorization: `JWT ${token}`
+        },
+      }
+      return config
+    },
     getReviews() {
-      axios.get(`${SERVER_URL}/movies/${this.movie.id}/review/`)
-        .then(res => {
+      const config = this.setToken()
+      axios.get(`${SERVER_URL}/movies/${this.movie.id}/review/`, config)
+        .then((res) => {
           this.reviews = res.data
         })
         .catch(err => {
           console.log(err);
         })
+    },
+    reviewUpdate() {
+      this.getReviews()
     }
   },
   created() {

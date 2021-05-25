@@ -3,10 +3,10 @@
     <ul>
       <dl v-for="(community, idx) in communities" :key="idx">
         <div>
-          <span @click="CommunityDetail">{{ community.title }}</span>
+          <span @click="CommunityDetail">제목 : {{ community.title }}</span>
         </div>
         <div>
-          <span @click="CommunityDetail">{{ community.content }}</span>
+          <span @click="CommunityDetail">내용 : {{ community.content }}</span>
         </div>
       </dl>
     </ul>

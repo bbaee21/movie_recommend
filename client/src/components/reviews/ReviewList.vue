@@ -1,7 +1,12 @@
 <template>
   <div>
     <div v-for="(review, idx) in reviews" :key="idx">
-      <MovieReviewItem :review="review" :movie="movie"/>
+      <MovieReviewItem 
+        :review="review" 
+        :movie="movie"
+        @deleteReview="deleteReview"
+        @review-update="updateReview"
+      />
     </div>
   </div>
 </template>
@@ -16,6 +21,14 @@ export default {
   },
   components: {
     MovieReviewItem
+  },
+  methods: {
+    deleteReview() {
+      this.$emit('deleteReview')
+    },
+    updateReview() {
+      this.$emit('review-update')
+    }
   }
 }
 </script>

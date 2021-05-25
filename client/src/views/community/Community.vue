@@ -2,7 +2,7 @@
   <div>
     <h1>Community</h1>
     <hr>
-    <CreateCommunity @createCommunity="createCommunity"/>
+    <CreateCommunity @community-update="communityUpdate"/>
     <CommunityList :communities="communities"/>
   </div>
 </template>
@@ -45,8 +45,8 @@ export default {
           console.log(err);
         })
     },
-    createCommunity: function () {
-      this.getCommunites()
+    communityUpdate: function () {
+      this.getCommunities()
     }
   },
   created: function () {
