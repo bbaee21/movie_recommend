@@ -36,7 +36,7 @@
       <h3 class="py-3 text-start" v-if="this.age==='어린이'">
         <span>전체 {{ age }} 인기 영화</span>
       </h3>
-      <h3 class="py-3 text-start" v-if="this.age==='성인'">
+      <h3 class="py-3 text-start" v-else-if="this.age==='성인'">
         <span>전체 {{ age }} 인기 영화</span>
       </h3>
       <h3 class="py-3 text-start" v-else>
