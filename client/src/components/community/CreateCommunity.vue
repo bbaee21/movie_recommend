@@ -3,16 +3,16 @@
     <div>
       <h2>게시글 작성</h2>
       <!-- <button >작성하기</button> -->
-        <div class="mb-3">
+        <div class="fs-3 mb-3">
           <label class="form-label"></label>
           <input type="text" class="form-control" v-model="title" placeholder="글 제목">
         </div>
-        <div class="mb-3">
+        <div class="fs-3 mb-3">
           <label class="form-label"></label>
           <textarea class="form-control" v-model="content" rows="3" @keypress.enter="createCommunity"></textarea>
         </div>
 
-        <button @click="createCommunity">작성완료</button>
+        <button class="fs-3" @click="createCommunity">작성완료</button>
     </div>
   </div>
 </template>

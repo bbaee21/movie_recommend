@@ -1,12 +1,12 @@
 <template>
-  <div>
+  <div class="py-5">
     <ul>
       <dl v-for="(community, idx) in communities" :key="idx">
-        <div>
-          <span @click="CommunityDetail(community)">제목 : {{ community.title }}</span>
+        <div class="py-1">
+          <span class="fs-1 py-1" @click="CommunityDetail(community)">제목 : {{ community.title }}</span>
         </div>
         <div>
-          <span @click="CommunityDetail(community)">내용 : {{ community.content }}</span>
+          <span class="fs-3 py-3" @click="CommunityDetail(community)">내용 : {{ community.content }}</span>
         </div>
       </dl>
     </ul>
