@@ -25,7 +25,7 @@ def signup(request):
         MYAPP_KEY = '6d1b396afbe3b40debd197b90f56c75e'
         headers = {'Authorization': 'KakaoAK {}'.format(MYAPP_KEY)}
 
-        filename = './media/sangrack.png'
+        filename = './media/'+str(user)+'.png'
         files = { 'image' : open(filename, 'rb')}
 
         response = requests.post(url, headers=headers, files=files)
