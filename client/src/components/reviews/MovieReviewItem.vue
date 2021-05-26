@@ -41,7 +41,7 @@
     </div>
 
 
-    <div class="text-start">
+    <!-- <div class="text-start">
       <label class="form-label">댓글</label>
       <input type="text" class="form-control" v-model="comment_content" @keypress.enter="createComments">
       <hr>
@@ -50,7 +50,7 @@
     </div>
 
       <button @click="createComments">댓글 작성</button>
-    </div>
+    </div> -->
     <hr>
   </div>
 </template>
