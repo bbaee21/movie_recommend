@@ -49,10 +49,12 @@ def movie_detail(request, movie_pk):
 
 # 해당 영화 리뷰 리스트 및 리뷰 생성
 @api_view(["GET", "POST"])
+@authentication_classes([JSONWebTokenAuthentication])
+@permission_classes([IsAuthenticated])
 def review_create_list(request, movie_pk):
     # GET 메서드 -> Review 리스트 보여주기
     if request.method == "GET":
-        reviews = get_list_or_404(Review, movie=movie_pk)
+        reviews = Review.objects.all().filter(movie=movie_pk)
         serializer = ReviewListSerializer(reviews, many=True)
         return Response(serializer.data)
 
@@ -69,6 +71,8 @@ def review_create_list(request, movie_pk):
 
 # 단일 리뷰 조회,수정,삭제
 @api_view(["GET", "PUT", "DELETE"])
+@authentication_classes([JSONWebTokenAuthentication])
+@permission_classes([IsAuthenticated])
 def review_detail_update_delete(request, review_pk):
     review = get_object_or_404(Review, pk=review_pk)
     if request.method == "GET":
@@ -88,6 +92,8 @@ def review_detail_update_delete(request, review_pk):
 
 # 해당 리뷰 댓글 리스트 및 댓글 생성
 @api_view(["GET", "POST"])
+@authentication_classes([JSONWebTokenAuthentication])
+@permission_classes([IsAuthenticated])
 def comment_create_list(request, review_pk):
     if request.method == "GET":
         comments = get_list_or_404(Comment, review=review_pk)
@@ -105,6 +111,8 @@ def comment_create_list(request, review_pk):
 
 # 단일 댓글 조회,수정,삭제
 @api_view(["GET", "PUT", "DELETE"])
+@authentication_classes([JSONWebTokenAuthentication])
+@permission_classes([IsAuthenticated])
 def comment_detail_update_delete(request, comment_pk):
     comment = get_object_or_404(Comment, pk=comment_pk)
     if request.method == "GET":

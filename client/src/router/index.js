@@ -38,12 +38,15 @@ const routes = [
     component: Community,
   },
   {
-    path: '/community/',
+    path: '/communitydetail/:community_id',
     name: 'CommunityDetail',
     component: CommunityDetail,
+    props: route => ({
+      community_id: Number(route.params.community_id)
+    })
   },
   {
-    path: '/community/community_d_u/',
+    path: '/community-d-u/:community_id',
     name: 'DetailUpdate',
     component: DetailUpdate,
   },

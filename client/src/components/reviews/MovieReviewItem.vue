@@ -4,12 +4,11 @@
       <h5 class="text-start">내용 | {{ review.content }} 평점 | {{ review.rank }}</h5>
       <p>{{ review.created_at }}</p>
     </div>
-      <button data-bs-toggle="modal" data-bs-target="#exampleModal">수정</button>
+      <button @click="update" data-bs-toggle="modal" data-bs-target="#exampleModal">수정</button>
       <button @click="deleteReview(review)">삭제</button>
     <hr>
 
-
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div v-show="show" class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -35,7 +34,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-            <button type="button" class="btn btn-primary" @click="updateReview">저장하기</button>
+            <button type="button" class="btn btn-primary" @click="updateReview(review)" data-bs-dismiss="modal">저장하기</button>
           </div>
         </div>
       </div>
@@ -119,7 +118,7 @@ export default {
             alert("본인만 리뷰 수정이 가능합니다.")
           }
           else {
-            this.show = 'yes'
+            this.updateClose()
             this.$emit('review-update')
           }
         })
@@ -134,11 +133,12 @@ export default {
       })
     },
     createComments() {
+      const config = this.setToken()
       const CommentItem = {
         content: this.comment_content
       }
       if (CommentItem.content) {
-        axios.post(`${SERVER_URL}/movies/${this.review.id}/comment/`, CommentItem)
+        axios.post(`${SERVER_URL}/movies/${this.review.id}/comment/`, CommentItem, config)
           .then(() => {
             this.getComments()
             this.comment_content = ''
@@ -146,7 +146,8 @@ export default {
       }
     },
     deleteComments() {
-      axios.delete(`${SERVER_URL}/movies/comment/${this.review.id}/`)
+      const config = this.setToken()
+      axios.delete(`${SERVER_URL}/movies/comment/${this.review.id}/`, config)
         .then(res => {
           if (res.data.message) {
             alert("본인만 삭제 가능")
@@ -158,6 +159,9 @@ export default {
     },
     update() {
       this.show = true
+    },
+    updateClose() {
+      this.show = false
     }
   },
   // created() {

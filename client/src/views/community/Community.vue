@@ -27,13 +27,11 @@ export default {
   },
   methods: {
     setToken: function () {
-      // 1. 저장된 jwt를 가져온다.
       const token = localStorage.getItem('jwt')
       const config ={
         Authorization: `JWT ${token}`, 
       }
       return config
-      // 2. header에다가 jwt를 넣어준다.
     },
     getCommunities: function () {
       const config = this.setToken()

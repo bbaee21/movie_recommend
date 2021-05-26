@@ -51,11 +51,11 @@ export default {
           console.log(err);
         })
     },
-    reviewUpdate() {
+    reviewUpdate: function () {
       this.getReviews()
     }
   },
-  created() {
+  created: function () {
     this.getReviews()
   }
 }

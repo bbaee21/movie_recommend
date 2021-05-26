@@ -33,7 +33,6 @@ def community_detail(request, community_pk):
 @permission_classes([IsAuthenticated])
 def community_create(request):
     if request.method == 'GET':
-        # todos = Todo.objects.all()
         communities = request.user.community_set.all()
         serializer = CommunityListSerializer(communities, many=True)
         return Response(serializer.data)

@@ -63,20 +63,20 @@ export default {
         title: community.title,
         content: community.content
       }
-        axios({
-          method: 'put',
-          url: `http://127.0.0.1:8000/community/community_d_u/${community.id}/`,
-          data: communityItem,
-          headers: this.setToken(),
-        })
-        .then((res) => {
-          console.log(res)
-          if (res.data.message) {
-            alert("본인만 수정 가능")
-          }
-          else {
-            this.$router.push({ name: 'CommunityDetail', params:  `${community.id}` })
-          }
+      axios({
+        method: 'put',
+        url: `http://127.0.0.1:8000/community/community_d_u/${community.id}/`,
+        data: communityItem,
+        headers: this.setToken(),
+      })
+      .then((res) => {
+        console.log(res)
+        if (res.data.message) {
+          alert("본인만 수정 가능")
+        }
+        else {
+          this.$router.push({ name: 'CommunityDetail', params:  `${community.id}` })
+        }
         })
     }
   },

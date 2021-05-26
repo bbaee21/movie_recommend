@@ -14,7 +14,7 @@
         <label>평점</label>
         <select class="form-select" aria-label="Default select example" v-model="myrate">
           <option selected>별점</option>
-          <option value="1">1</option>
+          <option value="1">one</option>
           <option value="2">Two</option>
           <option value="3">Three</option>
         </select>
@@ -44,6 +44,15 @@ export default {
     }
   },
   methods: {
+    setToken: function () {
+      const token = localStorage.getItem('jwt')
+      const config = {
+        headers: {
+          Authorization: `JWT ${token}`
+        },
+      }
+      return config
+    },
     getReviews() {
       axios.get(`${SERVER_URL}/movies/${this.movie.id}/review/`)
         .then(res => {
@@ -54,6 +63,7 @@ export default {
         })
     },
     createReview: function () {
+      const config = this.setToken()
       const reviewItem = {
         content: this.content,
         rank: this.myrate,
@@ -61,7 +71,7 @@ export default {
       }
       console.log(reviewItem);
       if (reviewItem.content) {
-        axios.post(`${SERVER_URL}/movies/${this.movie.id}/review/`, reviewItem)
+        axios.post(`${SERVER_URL}/movies/${this.movie.id}/review/`, reviewItem, config)
           .then(() => {
             this.$emit('review-update')
             this.content = ''
