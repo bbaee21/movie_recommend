@@ -26,6 +26,7 @@
 
           <span class="navbar-nav" v-if="isLogin">
             <ul class="navbar-nav mx-5">
+              <img class="nav-item" :src="profile" width="70px" height="70px" alt="">
               <li class="nav-item nav-link fs-3">{{ username }} 님</li>
               <li class="nav-item">
                 <router-link class="nav-link fs-3"  @click.native="logout" to="#">Logout</router-link>
@@ -63,6 +64,7 @@ export default {
       isLogin: false,
       username: '',
       movies: [],
+      profile: '',
     }
   },
   methods: {
@@ -76,11 +78,13 @@ export default {
     setLogin: function (username) {
       this.isLogin = true
       this.username = username
+      this.profile = 'http://127.0.0.1:8000/api/'+this.username+'.png'
     },
   },
   created: function () {
+    
     this.$router.push({name: 'Home'})
-  
+    // console.log(accounts.image.url);
     // const token = localStorage.getItem('jwt')
     // if (token) {
     //   this.isLogin = true
