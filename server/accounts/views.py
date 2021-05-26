@@ -24,8 +24,8 @@ def signup(request):
         url = "https://dapi.kakao.com/v2/vision/face/detect"
         MYAPP_KEY = '6d1b396afbe3b40debd197b90f56c75e'
         headers = {'Authorization': 'KakaoAK {}'.format(MYAPP_KEY)}
-
         filename = './media/'+str(user)+'.png'
+
         files = { 'image' : open(filename, 'rb')}
 
         response = requests.post(url, headers=headers, files=files)

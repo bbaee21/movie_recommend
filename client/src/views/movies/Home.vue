@@ -51,7 +51,13 @@
 
       <!-- 성별 추천 인기순 슬라이드 -->
       <div class="my-5">
-        <h3 class="d-flex my-3" v-if="this.gender==='남성'">
+        <h3 class="d-flex my-3" v-if="this.age==='어린이'">
+          <div class="text-start">
+          <span>{{ gender }} 추천 영화</span>
+          </div>
+          <button @click="changeGender">></button>
+        </h3>
+        <h3 class="d-flex my-3" v-else-if="this.gender==='남성'">
           <div class="text-start">
           <span>{{ gender }} 추천 영화</span>
           </div>
