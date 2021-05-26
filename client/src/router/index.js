@@ -22,9 +22,13 @@ const routes = [
     component: Login,
   },
   {
-    path: '/movies/home',
+    path: '/movies/home:age:gender',
     name: 'Home',
     component: Home,
+    props: route => ({
+      age: String(route.params.age),
+      gender: String(route.params.gender)
+    })
   },
   {
     path: '/movies/',

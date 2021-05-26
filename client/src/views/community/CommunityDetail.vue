@@ -70,7 +70,7 @@ export default {
         })
     },
     ToUpdateCommunity: function (community) {
-      this.$router.push({ name: 'DetailUpdate', params: `${community.id}`})
+      this.$router.push({ name: 'DetailUpdate', params: { community_id: `${community.id}`}})
     },
   },
   created: function () {

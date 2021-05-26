@@ -119,15 +119,15 @@ export default {
           this.movies[69], this.movies[55], this.movies[9], this.movies[10]
         ]
 
-        // 어른 추천
+        // 어른 여자 추천
         this.movieList7 = [
-          this.movies[28], this.movies[58], this.movies[97], this.movies[76]
+          this.movies[10], this.movies[54], this.movies[97], this.movies[77]
         ]
         this.movieList8 = [
-          this.movies[69], this.movies[21], this.movies[29], this.movies[18]
+          this.movies[69], this.movies[68], this.movies[60], this.movies[53]
         ]
         this.movieList9 = [
-          this.movies[78], this.movies[3], this.movies[86], this.movies[63]
+          this.movies[37], this.movies[3], this.movies[44], this.movies[63]
         ]
 
 

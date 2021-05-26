@@ -33,8 +33,14 @@
       </div>
       
       <!-- 전체 인기순 슬라이드 -->
-      <h3 class="py-3 text-start">
+      <h3 class="py-3 text-start" v-if="this.age==='어린이'">
         <span>전체 {{ age }} 인기 영화</span>
+      </h3>
+      <h3 class="py-3 text-start" v-if="this.age==='성인'">
+        <span>전체 {{ age }} 인기 영화</span>
+      </h3>
+      <h3 class="py-3 text-start" v-else>
+        <span>전체 인기 영화</span>
       </h3>
       <div>
           <RecommendAll
@@ -43,15 +49,24 @@
           />
       </div>
 
-
       <!-- 성별 추천 인기순 슬라이드 -->
       <div class="my-5">
-        <h3 class="d-flex my-3">
+        <h3 class="d-flex my-3" v-if="this.gender==='남성'">
           <div class="text-start">
           <span>{{ gender }} 추천 영화</span>
           </div>
           <button @click="changeGender">></button>
-
+        </h3>
+        <h3 class="d-flex my-3" v-else-if="this.gender==='여성'">
+          <div class="text-start">
+          <span>{{ gender }} 추천 영화</span>
+          </div>
+          <button @click="changeGender">></button>
+        </h3>
+        <h3 class="d-flex my-3" v-else>
+          <div class="text-start">
+          <span>추천 영화</span>
+          </div>
         </h3>
         <div>
           <Recommend
@@ -96,11 +111,15 @@ export default {
   data() {
     return {
       movies: [],
-      gender: "여성",
-      age: "성인",
-      face: '',
+      // gender: "여성",
+      // age: "성인",
+
     }
   },
+  props: {
+    age: String,
+    gender: String
+    },
   components: {
     MovieCard,
     Recommend,
@@ -113,10 +132,11 @@ export default {
       } else {
         this.gender = "남성"
       }
-    }
+    },
+
   },
   created: function () {
-    
+
     // vuex로 data 저장`
     this.$store.dispatch('addCatImg')
     // router data 저장
@@ -128,20 +148,7 @@ export default {
       .catch((error) => {
         console.error(error)
       })
-    // 여기 수정
-    // const url = "https://dapi.kakao.com/v2/vision/face/detect"
-    // // const MYAPP_KEY = '6d1b396afbe3b40debd197b90f56c75e'
-    // const headers = {'Authorization': 'KakaoAK 6d1b396afbe3b40debd197b90f56c75e'}
-    // // const files = {'image_url' : 'http://127.0.0.1:8000/api/gg.png'}
-    // const files = {'image_url' : 'https://t1.daumcdn.net/alvolo/_vision/openapi/r2/images/01.jpg'}
-    // axios.post(url, headers, files)
-    //   .then((res) => {
-    //     console.log(res) 
-    //     this.face = res
-    //   })
-    //   .catch((error) => {
-    //     console.error(error)
-    //   })
+    
   }
 }
 </script>

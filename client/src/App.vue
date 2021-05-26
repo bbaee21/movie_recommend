@@ -52,10 +52,10 @@
 
 <script>
 // import jwt_decode from "jwt-decode"
-// import axios from 'axios'
 
+import axios from 'axios'
 
-// const SERVER_URL = process.env.VUE_APP_SERVER_URL
+const SERVER_URL = process.env.VUE_APP_SERVER_URL
 
 export default {
   name: 'App',
@@ -65,6 +65,9 @@ export default {
       username: '',
       movies: [],
       profile: '',
+      userinfo: '',
+      gender: '',
+      age: '',
     }
   },
   methods: {
@@ -79,11 +82,45 @@ export default {
       this.isLogin = true
       this.username = username
       this.profile = 'http://127.0.0.1:8000/api/'+this.username+'.png'
+      this.$store.dispatch('addCatImg')
+      // router data 저장
+      axios.get(`${SERVER_URL}/accounts/userinfo/?format=json`)
+        .then((res) => {
+          this.userinfo = res.data
+          var step
+          for (step = 0; step < this.userinfo.length; step++) {
+            if (this.userinfo[step]['username'] === this.username) {
+              this.age = this.userinfo[step]['age']
+              this.gender = this.userinfo[step]['male']
+
+              }
+          }
+          this.changekakao()
+          this.$router.push({name: 'Home', params: {age: `${this.age}`, gender: `${this.gender}`}})
+        })
+        .catch((error) => {
+          console.error(error)
+        })
     },
+    changekakao() {
+      if (Number(this.age) > 20) {
+        this.age = '성인'
+        console.log(this.age);
+      } else {
+        this.age = '어린이'
+      }
+      
+      if (Number(this.gender) > 0.5) {
+        this.gender = '남성'
+        console.log(this.gender);
+      } else {
+        this.gender = '여성'
+      }
+    }
   },
   created: function () {
     
-    this.$router.push({name: 'Home'})
+    // this.$router.push({name: 'Home', params: {age: `${this.age}`, gender: `${this.gender}`}})
     // console.log(accounts.image.url);
     // const token = localStorage.getItem('jwt')
     // if (token) {
@@ -95,8 +132,8 @@ export default {
 
     
     
-    // }
-  }
+    }
+  // }
 }
 </script>
 
