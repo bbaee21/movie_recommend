@@ -26,7 +26,7 @@
 
           <span class="navbar-nav" v-if="isLogin">
             <ul class="navbar-nav mx-5">
-              <img class="nav-item" :src="profile" width="70px" height="70px" alt="">
+              <img class="nav-item" :src="profile" width="80px" height="60px" alt="">
               <li class="nav-item nav-link fs-3">{{ username }} 님</li>
               <li class="nav-item">
                 <router-link class="nav-link fs-3"  @click.native="logout" to="#">Logout</router-link>
