@@ -91,7 +91,7 @@ export default {
     deleteReview() {
       axios({
         method: 'delete',
-        url: `http://127.0.0.1:8000/movies/review/${this.review.id}/`,
+        url: `${SERVER_URL}/movies/review/${this.review.id}/`,
         headers: this.setToken()
       })
         .then((res) => {
@@ -111,7 +111,7 @@ export default {
       }
       axios({
         method: 'put',
-        url: `http://127.0.0.1:8000/movies/review/${this.review.id}/`,
+        url: `${SERVER_URL}/movies/review/${this.review.id}/`,
         data: reviewItem,
         headers: this.setToken()
       })

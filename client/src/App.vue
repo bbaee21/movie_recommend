@@ -29,7 +29,7 @@
               <img class="nav-item" :src="profile" width="80px" height="60px" alt="">
               <li class="nav-item nav-link fs-3">{{ username }} 님</li>
               <li class="nav-item">
-                <router-link class="nav-link fs-3"  @click.native="logout" to="#">Logout</router-link>
+                <router-link class="nav-link fs-3"  @click.native="logout" :to="{ name: 'Home'}">Logout</router-link>
               </li>
             </ul>
           </span>
@@ -81,7 +81,7 @@ export default {
     setLogin: function (username) {
       this.isLogin = true
       this.username = username
-      this.profile = 'http://127.0.0.1:8000/api/'+this.username+'.png'
+      this.profile = SERVER_URL+'/api/'+this.username+'.png'
       this.$store.dispatch('addCatImg')
       // router data 저장
       axios.get(`${SERVER_URL}/accounts/userinfo/?format=json`)

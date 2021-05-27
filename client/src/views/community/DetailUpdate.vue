@@ -65,7 +65,7 @@ export default {
       }
       axios({
         method: 'put',
-        url: `http://127.0.0.1:8000/community/community_d_u/${community.id}/`,
+        url: `${SERVER_URL}/community/community_d_u/${community.id}/`,
         data: communityItem,
         headers: this.setToken(),
       })

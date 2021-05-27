@@ -20,7 +20,7 @@
 <script>
 import axios from 'axios'
 
-// const SERVER_URL = process.env.VUE_APP_SERVER_URL
+const SERVER_URL = process.env.VUE_APP_SERVER_URL
 
 export default {
   name: 'CreateCommunity',
@@ -52,7 +52,7 @@ export default {
       if (CommunityItem.title) {
         axios({
           method: 'post',
-          url: 'http://127.0.0.1:8000/community/community_c/',
+          url: SERVER_URL+'/community/community_c/',
           data: CommunityItem,
           headers: this.setToken()
         })
