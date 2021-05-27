@@ -2,6 +2,9 @@
   <div class="py-5">
     <ul>
       <dl v-for="(community, idx) in communities" :key="idx">
+        <div>
+          <span class="fs-2 py-1" @click="CommunityDetail(community)">게시글 번호 : {{ community.id }}</span>
+        </div>
         <div class="py-1">
           <span class="fs-1 py-1" @click="CommunityDetail(community)">제목 : {{ community.title }}</span>
         </div>

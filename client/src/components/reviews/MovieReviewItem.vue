@@ -24,10 +24,12 @@
               <div class="mb-3">
                 <label for="message-text" class="col-form-label">평점</label>
                   <select class="form-select" aria-label="Default select example" v-model="myrate">
-                  <option selected>별점</option>
+                  <option selected>평점</option>
                   <option value="1">1</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
                 </select>
               </div>
             </form>

@@ -1,13 +1,15 @@
 <template>
   <div>
     <h2>게시글</h2>
+    <hr>
     <div>
-      <span>제목 | {{ community.title }}</span>
-      <span>내용 | {{ community.content }}</span>
+      <h3>제목 | {{ community.title }}</h3><br>
+      <h4>내용 | {{ community.content }}</h4>
     </div>
+    <br>
     <div>
-      <span>작성시간 | {{ community.created_at }}</span>
-      <span>수정시간 | {{ community.updated_at }}</span>
+      <span>작성시간 | {{ $moment(community.created_at).format('YYYY-MM-DD HH:mm:ss')  }}</span><br>
+      <span>수정시간 | {{ $moment(community.updated_at).format('YYYY-MM-DD HH:mm:ss') }}</span>
     </div>
     <div>
       <button @click="ToUpdateCommunity(community)">수정</button>

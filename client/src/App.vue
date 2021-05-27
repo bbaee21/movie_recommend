@@ -120,7 +120,7 @@ export default {
   },
   created: function () {
     
-    // this.$router.push({name: 'Home', params: {age: `${this.age}`, gender: `${this.gender}`}})
+    this.$router.push({name: 'Home', params: {age: `${this.age}`, gender: `${this.gender}`}})
     // console.log(accounts.image.url);
     // const token = localStorage.getItem('jwt')
     // if (token) {

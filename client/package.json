@@ -17,6 +17,7 @@
     "moment": "^2.29.1",
     "vue": "^2.6.11",
     "vue-media-recorder": "^0.1.25",
+    "vue-moment": "^4.1.0",
     "vue-router": "^3.2.0",
     "vuex": "3.6.2"
   },

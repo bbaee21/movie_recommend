@@ -22,7 +22,7 @@
                 </dl>
                 <dl>
                   <dt>장르</dt>
-                  <dd>{{ movie.genre_ids }}</dd>
+                  <dd>{{ movie.genre }}</dd>
                 </dl>
                 <dl>
                   <dt>평점</dt>
