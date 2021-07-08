@@ -20,10 +20,13 @@
     <div class="my-5">
       <h2>Face ID 사진을 넣어주세요</h2>
 
-        
       <PhotoCapture v-model="imageBase64" />
     </div>
-  
+    <h3 v-if="this.errorlog">
+      <span>
+        {{this.errorlog}}
+      </span>
+    </h3>
     <button @click="signup">회원가입</button>
   </div>
 </template>
@@ -42,7 +45,7 @@ export default {
       password: '',
       passwordConfirmation: '',
       imageBase64: null,
-
+      errorlog: '',
     }
   },
   methods: {
@@ -75,7 +78,7 @@ export default {
       var blob = new Blob(byteArrays, {type: contentType});
       blob.lastModifiedDate  = new Date()
       const imagename = this.username + '.png'
-      console.log(imagename)
+      // console.log(imagename)
       // blob 파일에 이름 넣기
       const file = new File([blob], imagename, {type: "image/png"})
       // console.log(file)
@@ -112,6 +115,7 @@ export default {
         })
         .catch(err => {
           console.log(err.response)
+          this.errorlog = '다른 아이디로 얼굴인식을 다시 시도해주세요.'
           })
     },
     // sendImages() {

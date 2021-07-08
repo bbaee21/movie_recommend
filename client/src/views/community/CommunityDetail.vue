@@ -62,7 +62,7 @@ export default {
         headers: this.setToken()
       })
         .then((res) => {
-          console.log(res)
+          // console.log(res)
           if (res.data.message) {
             alert("본인만 삭제 가능")
           }

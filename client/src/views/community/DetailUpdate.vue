@@ -51,7 +51,7 @@ export default {
 
       axios.get(`${SERVER_URL}/community/${community_id}`, config)
         .then((res) => {
-          console.log(res)
+          // console.log(res)
           this.community = res.data
         })
         .catch((err) => {
@@ -70,7 +70,7 @@ export default {
         headers: this.setToken(),
       })
       .then((res) => {
-        console.log(res)
+        // console.log(res)
         if (res.data.message) {
           alert("본인만 수정 가능")
         }

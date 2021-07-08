@@ -48,7 +48,7 @@ export default {
         title: this.title,
         content: this.content,
       }
-      console.log(CommunityItem);
+      // console.log(CommunityItem);
       if (CommunityItem.title) {
         axios({
           method: 'post',

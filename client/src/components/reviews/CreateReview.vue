@@ -71,7 +71,7 @@ export default {
         rank: this.myrate,
         movie: this.movie.id,
       }
-      console.log(reviewItem);
+      // console.log(reviewItem);
       if (reviewItem.content) {
         axios.post(`${SERVER_URL}/movies/${this.movie.id}/review/`, reviewItem, config)
           .then(() => {
